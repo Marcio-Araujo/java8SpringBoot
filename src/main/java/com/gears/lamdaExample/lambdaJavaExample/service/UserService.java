@@ -22,4 +22,8 @@ public interface UserService {
 	
 	public Map<Integer, List<String>> groupByAge();
 
+	public Long countUnderAge();
+
+	public Long countOfAge();
+
 }

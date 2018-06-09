@@ -43,8 +43,17 @@ public class UserController {
 	
 	@RequestMapping("/userGroupByAge")
 	public Map<Integer, List<String>> findAllGroupByAge(){
-		return service.groupByAge();
-		
+		return service.groupByAge();	
+	}
+	
+	@RequestMapping("/countUnderAge")
+	public Long countUnderAge(){
+		return service.countUnderAge();		
+	}
+	
+	@RequestMapping("/countUnderAge")
+	public Long countOfAge(){
+		return service.countOfAge();		
 	}
 	
 	

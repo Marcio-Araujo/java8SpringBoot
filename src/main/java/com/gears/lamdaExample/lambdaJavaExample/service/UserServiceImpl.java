@@ -2,8 +2,7 @@ package com.gears.lamdaExample.lambdaJavaExample.service;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import java.util.Map;	
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +53,23 @@ public class UserServiceImpl implements UserService{
 						Collectors.groupingBy(
 								User::getAge, 
 								Collectors.mapping(User::getName, Collectors.toList())));
+	}
+	
+	public Long countUnderAge() {
+		return repository.findAll().stream()
+				.filter(e -> e.getAge() < 18)
+				.mapToInt(User::getAge).count();
+	}
+
+	@Override
+	public Long countOfAge() {
+		return repository.findAll().stream()
+				.filter(e -> e.getAge() > 18).mapToInt(User::getAge).count();
+	}
+	
+	public Integer sumOfAge() {
+		return repository.findAll()
+				.stream().mapToInt(User::getAge).sum();
 	}
 	
 	
